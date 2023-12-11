@@ -58,6 +58,8 @@ class MethodChannelController {
     return isNotificationPermissionGiven;
   }
 
+  /// UsageStatePermissions...
+  /// Check for usageState permission.
   Future<bool> checkUsageStatePermission() async {
     isUsageStatPermissionGiven =
     (await UsageStats.checkUsagePermission() ?? false);
@@ -65,6 +67,7 @@ class MethodChannelController {
     return isUsageStatPermissionGiven;
   }
 
+  /// Ask for usageState Permission
   Future<bool> askUsageStatsPermission() async {
     try {
       return await platform
@@ -75,6 +78,15 @@ class MethodChannelController {
     } on PlatformException catch (e) {
       // Handle exceptions
       return false;
+    }
+  }
+
+  ///
+  Future<void> startForegroundService() async {
+    try {
+      await platform.invokeMethod('startForegroundService');
+    } on PlatformException catch (e) {
+      print('Error starting foreground service: ${e.message}');
     }
   }
 

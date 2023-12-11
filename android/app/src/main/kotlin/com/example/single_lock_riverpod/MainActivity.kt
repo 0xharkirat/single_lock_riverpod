@@ -30,6 +30,10 @@ class MainActivity: FlutterActivity() {
                         startActivity(intent)
                     }
                 }
+                call.method.equals("startForegroundService") -> {
+                    startForegroundService();
+
+                }
 
                 else -> {
                     result.notImplemented()
@@ -62,4 +66,10 @@ class MainActivity: FlutterActivity() {
             false
         }
     }
+
+    private fun startForegroundService() {
+        val serviceIntent = Intent(this, ForegroundService::class.java)
+        startService(serviceIntent)
+    }
+
 }

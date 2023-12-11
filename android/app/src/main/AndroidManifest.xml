@@ -53,7 +53,10 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".ForegroundService"/>
+        <service
+            android:name=".ForegroundService"
+            android:enabled="true"
+            android:exported="false" />
 
 
         <!-- Don't delete the meta-data below.

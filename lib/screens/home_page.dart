@@ -56,7 +56,12 @@ class _HomePageState extends ConsumerState<HomePage> {
         title: const Text("Single Lock"),
       ),
       body: Center(
-        child: Text(welcomeText),
+        child: ElevatedButton(
+          onPressed: () {
+            ref.read(methodChannelControllerProvider).startForegroundService();
+          },
+          child: Text('Start Foreground Service'),
+        ),
       ),
     );
   }
